@@ -15,19 +15,17 @@ class GamesController < ApplicationController
             name: params[:name],
             description: params[:description],
             link: params[:link],
-            image: params[:image]
+            image: params[:image],
+            user_id: params[:user_id]
         )
         render json: @game
     end 
 
     def update
         @game = Game.find(params[:id])
-        @game.update(
-            name: params[:name],
-            description: params[:description],
-            link: params[:link],
-            image: params[:image]
-        )
+        @game.name = params[:name]
+        @game.image = params[:image]
+        @game.save!
         render json: @game
     end 
 

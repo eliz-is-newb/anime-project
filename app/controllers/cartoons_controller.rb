@@ -12,12 +12,13 @@ class CartoonsController < ApplicationController
 
     def create
         @cartoon = Cartoon.create(
-            name: params[:Cartoon],
+            name: params[:name],
             description: params[:description],
             link1: params[:link1],
             link2: params[:link2],
             link3: params[:link3],
-            image: params[:image]
+            image: params[:image],
+            user_id: params[:user_id]
         )
         render json: @cartoon
     end 
@@ -25,12 +26,11 @@ class CartoonsController < ApplicationController
     def update
         @cartoon = Cartoon.find(params[:id])
         @cartoon.update(
-            name: params[:Cartoon],
+            name: params[:name],
             description: params[:description],
             link1: params[:link1],
             link2: params[:link2],
-            link3: params[:link3],
-            image: params[:image]
+            link3: params[:link3]
         )
         render json: @cartoon
     end 
